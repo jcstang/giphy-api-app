@@ -1,3 +1,21 @@
 /* Giphy API App */
 /* Jacob Stanger | jan 2020 */
 
+header {
+  color: white;
+}
+
+button {
+  margin: 8px 2px;
+}
+
+.btn:hover {
+  /* This works */
+  /* background-color: pink; */
+}
+
+.main {
+  border-top: 3px solid darkslategray;
+  padding-top: 10px;
+  margin-top: 5px;
+}
