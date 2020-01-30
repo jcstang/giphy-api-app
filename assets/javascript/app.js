@@ -32,6 +32,7 @@ $('button').on('click', function(){
         var parentDiv = $('<div>').addClass('col-sm-4');
         var cardDiv = $('<div>').addClass('card mb-4 shadow-sm mx-auto');
         parentDiv.append(cardDiv);
+
   
         // ===== Title ================
         // var cardTitle = $('<h5>').text('put json title thing here');
