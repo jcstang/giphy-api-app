@@ -23,43 +23,44 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-
     <!-- main title or nav -->
     <header>
+      <div class="container">
         <div class="bg-dark">
-          <div class="container">
-            <h1>
-              <!-- easter eg on tp  -->
-              <i class="fas fa-toilet-paper"></i>
-              Hello Giphy!
-              <i class="far fa-hand-spock"></i>
-            </h1>
-          </div>
+          <h1>
+            <!-- easter eg on tp  -->
+            <i class="fas fa-toilet-paper"></i>
+            Hello Giphy!
+            <i class="far fa-hand-spock"></i>
+          </h1>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
+      </div>
     </header>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <h1 class="">Hello Giphy!<span class="fas fa-toilet-paper"></span><span class="fa fa-hand-spock"></span></h1>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
 
     <!-- list of buttons to get gifs -->
     <div class="container buttons-div">
-      <div class="row buttons-row">
-        <button class="btn btn-info" data-gif="bird">bird</button>
-        <button class="btn btn-info" data-gif="gecko">gecko</button>
-        <button class="btn btn-info" data-gif="dolphin">dolphin</button>
-        <button class="btn btn-info" data-gif="dogs">dogs</button>
-        <button class="btn btn-info" data-gif="cat">cats</button>
-      </div>
+      <div class="row buttons-row"></div>
     </div>
 
     <!-- MAIN CONTAINER -->
     <div class="container main">
-
       <!-- cards -->
-      <div class="container row first-row"></div> 
+      <div class="container row first-row mx-auto"></div>
       <!-- end of 1st row  -->
-
-
-
     </div>
-
 
     <!-- Jquery CDN -->
     <script

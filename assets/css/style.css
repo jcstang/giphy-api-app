@@ -5,7 +5,16 @@ body {
   background-image: url('../imgs/subtle_white_feathers.png');
 }
 
+.bg-dark {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 header {
+  color: white;
+}
+
+nav {
   color: white;
 }
 
@@ -19,7 +28,7 @@ button {
 }
 
 .main {
-  border-top: 3px solid darkslategray;
+  /* border-top: 3px solid darkslategray; */
   padding-top: 10px;
 }
 
