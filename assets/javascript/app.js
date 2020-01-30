@@ -7,10 +7,15 @@ $('button').on('click', function(){
   var daGif = $(this).attr('data-gif');
   console.log('daGif ' + daGif);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    daGif.split(' ').join('+') + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+    daGif.split(' ').join('+') + "&api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&offset=0&limit=10";
+    // daGif.split(' ').join('+') + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+  //https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=bird&limit=10&offset=10&rating=G&lang=en
+
+  var searchURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=bird&limit=10&offset=10";
 
   $.ajax({
-    url: queryURL,
+    url: searchURL,
     method: 'GET'
   }).then(function(response){
 
@@ -40,7 +45,9 @@ $('button').on('click', function(){
         console.log(cardDiv);
         
         // TODO: add this cardDiv to the holding place
-        $('.first-row').append(cardDiv);
+        // $('.first-row').append(cardDiv);
+        $('.first-row').prepend(cardDiv);
+
         // TODO: how do I make a new row after 3 gifs
 
       } 
