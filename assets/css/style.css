@@ -29,4 +29,10 @@ button {
 
 .card {
   margin: 11px;
+  /* max-width: 100%; */
+  overflow: hidden;
+}
+
+.card-title {
+  word-wrap: break-word;
 }

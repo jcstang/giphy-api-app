@@ -5,17 +5,19 @@
 
 $('button').on('click', function(){
   var daGif = $(this).attr('data-gif');
-  console.log('daGif ' + daGif);
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    daGif.split(' ').join('+') + "&api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&offset=0&limit=10";
-    // daGif.split(' ').join('+') + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+  // console.log('daGif ' + daGif);
+
+  var randomNumber = Math.floor(Math.random() * 500);
+  console.log(randomNumber);
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=" +
+    daGif.split(' ').join('+') + "&limit=10&offset=" + randomNumber + "&rating=G&lang=en";
 
   //https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=bird&limit=10&offset=10&rating=G&lang=en
 
   var searchURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=bird&limit=10&offset=10";
 
   $.ajax({
-    url: searchURL,
+    url: queryURL,
     method: 'GET'
   }).then(function(response){
 
@@ -23,6 +25,7 @@ $('button').on('click', function(){
     // console.log(results);
     var cardRowCount = 0;
 
+    // ====== loop thru the gifs that came back ==============================
     for (let i = 0; i < results.length; i++) {
       // cardRowCount += 1;
 
@@ -32,12 +35,13 @@ $('button').on('click', function(){
         parentDiv.append(cardDiv);
   
         // ===== Title ================
-        var cardTitle = $('<h5>').text('put json title thing here');
-        var cardHeader = $('<div>').addClass('card-header').append(cardTitle);
+        // var cardTitle = $('<h5>').text('put json title thing here');
+        var cardTitle = $('<h5>').text(results[i].title);
+        var cardHeader = $('<div>').addClass('card-header text-wrap').append(cardTitle);
         cardDiv.append(cardHeader);
   
         // ====== card gif img =========
-        var cardImg = $('<img>').attr('src', results[i].images.fixed_width.url);
+        var cardImg = $('<img>').attr('src', results[i].images.fixed_height.url);
         var cardBody = $('<div>').addClass('card-body').append(cardImg);
         cardDiv.append(cardBody);
 
