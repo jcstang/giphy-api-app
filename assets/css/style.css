@@ -1,6 +1,10 @@
 /* Giphy API App */
 /* Jacob Stanger | jan 2020 */
 
+body {
+  /* background-image: url('../imgs/grey_wash_wall.png'); */
+}
+
 header {
   color: white;
 }
@@ -17,9 +21,12 @@ button {
 .main {
   border-top: 3px solid darkslategray;
   padding-top: 10px;
-  margin-top: 5px;
 }
 
 .container h1 {
   text-align: center;
+}
+
+.card {
+  margin: 11px;
 }

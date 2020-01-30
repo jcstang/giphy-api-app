@@ -7,7 +7,7 @@ $('button').on('click', function(){
   var daGif = $(this).attr('data-gif');
   console.log('daGif ' + daGif);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    daGif.split(' ').join('+') + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=3";
+    daGif.split(' ').join('+') + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
   $.ajax({
     url: queryURL,
@@ -15,14 +15,15 @@ $('button').on('click', function(){
   }).then(function(response){
 
     var results = response.data;
+    // console.log(results);
     var cardRowCount = 0;
 
     for (let i = 0; i < results.length; i++) {
-      cardRowCount += 1;
+      // cardRowCount += 1;
 
-      if (cardRowCount <= 3) {
+      if (cardRowCount <= 4) {
         var parentDiv = $('<div>').addClass('col-sm-4');
-        var cardDiv = $('<div>').addClass('card mb-4 shadow-sm');
+        var cardDiv = $('<div>').addClass('card mb-4 shadow-sm mx-auto');
         parentDiv.append(cardDiv);
   
         // ===== Title ================
@@ -31,7 +32,7 @@ $('button').on('click', function(){
         cardDiv.append(cardHeader);
   
         // ====== card gif img =========
-        var cardImg = $('<img>').attr('src', results[i].images.fixed_height.url);
+        var cardImg = $('<img>').attr('src', results[i].images.fixed_width.url);
         var cardBody = $('<div>').addClass('card-body').append(cardImg);
         cardDiv.append(cardBody);
 
@@ -42,11 +43,12 @@ $('button').on('click', function(){
         $('.first-row').append(cardDiv);
         // TODO: how do I make a new row after 3 gifs
 
-      } else {
-        cardRowCount = 0;
-      }
+      } 
+      // else {
+      //   cardRowCount = 0;
+      // }
 
-      console.log('cardRowCount: ' + cardRowCount);
+      // console.log('cardRowCount: ' + cardRowCount);
 
 
     }
