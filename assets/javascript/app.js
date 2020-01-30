@@ -20,11 +20,23 @@ $(document).ready(function () {
   // EVENT
   // ===================================================
   $('#add-button').on('click', function () {
-    var animal = $("#movie-input").val().trim();
-    // TODO: setup input for getting the new animal name.
+    event.preventDefault();
+
+    console.log($('#animal-input'));
+    var animal = $('#animal-input').val().trim();
+    console.log('here is the animal you want to submit: ' + animal);
+
+    //TODO: check if it's an ok value
+
+    //TODO: add to the array
+
+    // TODO: render the buttons again
+    populateTheButtons(buttonGroup);
+    
   });
 
-  $('button').on('click', function() {
+
+  $('.animal-button').on('click', function() {
   
     var daGif = $(this).attr('data-gif');
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=" + 
@@ -95,7 +107,7 @@ $(document).ready(function () {
   // TODO: use this function to help with attaching a new button from user input
   function createButton(text) {
     var newButton = $('<button>')
-      .addClass('btn btn-info ')
+      .addClass('btn btn-info animal-button')
       .attr('data-gif', text)
       .text(text);
     
