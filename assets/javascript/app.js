@@ -19,6 +19,11 @@ $(document).ready(function () {
   // ===================================================
   // EVENT
   // ===================================================
+  $('#add-button').on('click', function () {
+    var animal = $("#movie-input").val().trim();
+    // TODO: setup input for getting the new animal name.
+  });
+
   $('button').on('click', function() {
   
     var daGif = $(this).attr('data-gif');
