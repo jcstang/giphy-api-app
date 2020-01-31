@@ -14,44 +14,18 @@ $(document).ready(function () {
   // ===================================================
   // START APP
   // ===================================================
-  // createThenPopulateTheButtons(buttonGroup);
-  createTheButtons(buttonGroup);
-  displayAllButtons(listOfButtons);
+  loadThePage();
 
 
 
-
-
+  
   // ===================================================
-  // EVENT
+  // CUSTOM FUNCTIONS
   // ===================================================
-  // $('#add-button').on('click', function () {
-  //   event.preventDefault();
-
-  //   console.log($('#animal-input'));
-  //   var animal = $('#animal-input').val().trim();
-  //   console.log('here is the animal you want to submit: ' + animal);
-
-  //   //TODO: check if it's an ok value
-
-  //   //TODO: add to the array
-  //   // buttonGroup.push(animal);
-  //   var newAnimal = createButton(animal);
-  //   listOfButtons.push(newAnimal);
-  //   // TODO: render the buttons again
-  //   displayAllButtons(listOfButtons);
-
-
-
-  //   // TODO: render the buttons again
-  //   // FIXME: creates duplicates
-  //   // createThenPopulateTheButtons(buttonGroup);
-  //   // refreshButtonGroup();
-
-  //   console.log('buttonGroup:');
-  //   console.log(buttonGroup);
-
-  // });
+  function loadThePage() {
+    createTheButtons(buttonGroup);
+    displayAllButtons(listOfButtons);
+  }
 
   function submitNewAnimal() {
     event.preventDefault();
@@ -63,12 +37,6 @@ $(document).ready(function () {
   }
 
 
-
-
-
-  // ===================================================
-  // CUSTOM FUNCTIONS
-  // ===================================================
   function getTheGifsFromGiphy() {
     var daGif = $(this).attr('data-gif');
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=" +
@@ -107,6 +75,7 @@ $(document).ready(function () {
     });
   }
 
+
   function createTheButtons(arr) {
     for (let i = 0; i < arr.length; i++) {
       // create the button
@@ -114,6 +83,7 @@ $(document).ready(function () {
       // append the button
       listOfButtons.push(newButton);
       // $('.buttons-row').append(newButton);
+      
     }
   }
 
@@ -124,15 +94,17 @@ $(document).ready(function () {
     }
   }
 
+
   function createButton(text) {
     var newButton = $('<button>')
       .addClass('btn btn-info animal-button')
       .attr('data-gif', text)
       .text(text);
 
+    console.log( newButton.text() );
+
     return newButton;
 
-    // $('.buttons-row').append(newButton);
   }
 
 
