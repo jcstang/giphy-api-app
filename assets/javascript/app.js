@@ -80,18 +80,6 @@ $(document).ready(function () {
   }
 
 
-  // function createTheButtons(arr) {
-  //   for (let i = 0; i < arr.length; i++) {
-  //     // create the button
-  //     var newButton = createButton(arr[i]);
-  //     // append the button
-  //     listOfButtons.push(newButton);
-  //     // $('.buttons-row').append(newButton);
-  //     console.log( listOfButtons[i].text() );
-      
-  //   }
-  // }
-
   function loadButtonArray(arr) {
     for (let i = 0; i < arr.length; i++) {
       var newButton = createButton(arr[i]);
