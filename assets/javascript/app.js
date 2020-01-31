@@ -7,7 +7,7 @@ $(document).ready(function () {
   // ===================================================
   // GLOBAL VARIABLES
   // ===================================================
-  var buttonGroup = ['dragon', 'bird', 'gecko', 'dolphin', 'cat', 'dog', 'catdog'];
+  var listOfTitles = ['dragon', 'bird', 'gecko', 'dolphin', 'cat', 'dog', 'catdog'];
   var listOfButtons = [];
   var randomNumber = Math.floor(Math.random() * 62);
 
@@ -18,12 +18,13 @@ $(document).ready(function () {
 
 
 
-  
+
   // ===================================================
   // CUSTOM FUNCTIONS
   // ===================================================
   function loadThePage() {
-    createTheButtons(buttonGroup);
+    // TODO: create and load the list of animal buttons
+    loadButtonArray(listOfTitles);
     displayAllButtons(listOfButtons);
   }
 
@@ -31,6 +32,9 @@ $(document).ready(function () {
     event.preventDefault();
     var animal = $('#animal-input').val().trim();
     var animalButton = createButton(animal);
+
+    // clear out input
+    $('#animal-input').val('');
 
     listOfButtons.push(animalButton);
     displayAllButtons(listOfButtons);
@@ -76,14 +80,22 @@ $(document).ready(function () {
   }
 
 
-  function createTheButtons(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      // create the button
-      var newButton = createButton(arr[i]);
-      // append the button
-      listOfButtons.push(newButton);
-      // $('.buttons-row').append(newButton);
+  // function createTheButtons(arr) {
+  //   for (let i = 0; i < arr.length; i++) {
+  //     // create the button
+  //     var newButton = createButton(arr[i]);
+  //     // append the button
+  //     listOfButtons.push(newButton);
+  //     // $('.buttons-row').append(newButton);
+  //     console.log( listOfButtons[i].text() );
       
+  //   }
+  // }
+
+  function loadButtonArray(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      var newButton = createButton(arr[i]);
+      listOfButtons.push(newButton);
     }
   }
 
