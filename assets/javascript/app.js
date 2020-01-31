@@ -8,14 +8,20 @@ $(document).ready(function () {
   // GLOBAL VARIABLES
   // ===================================================
   var buttonGroup = ['dragon', 'bird', 'gecko', 'dolphin', 'cat', 'dog', 'catdog'];
+  var listOfButtons = [];
   var randomNumber = Math.floor(Math.random() * 62);
 
   // ===================================================
   // START APP
   // ===================================================
-  populateTheButtons(buttonGroup);
+  // createThenPopulateTheButtons(buttonGroup);
+  createTheButtons(buttonGroup);
+  displayAllButtons(listOfButtons);
 
 
+
+
+  
   // ===================================================
   // EVENT
   // ===================================================
@@ -29,9 +35,21 @@ $(document).ready(function () {
     //TODO: check if it's an ok value
 
     //TODO: add to the array
+    // buttonGroup.push(animal);
+    var newAnimal = createButton(animal);
+    listOfButtons.push(newAnimal);
+    // TODO: render the buttons again
+    displayAllButtons(listOfButtons);
+
+
 
     // TODO: render the buttons again
-    populateTheButtons(buttonGroup);
+    // FIXME: creates duplicates
+    // createThenPopulateTheButtons(buttonGroup);
+    // refreshButtonGroup();
+
+    console.log('buttonGroup:');
+    console.log(buttonGroup);
     
   });
 
@@ -41,8 +59,7 @@ $(document).ready(function () {
     var daGif = $(this).attr('data-gif');
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=" + 
     daGif.split(' ').join('+') + "&limit=10&offset=" + randomNumber + "&rating=G&lang=en";
-    
-    
+
     
     // ===================================================
     // AJAX CALL - to giphy api
@@ -94,12 +111,20 @@ $(document).ready(function () {
   // ===================================================
   // CUSTOM FUNCTIONS
   // ===================================================
-  function populateTheButtons(arr) {
+  function createTheButtons(arr) {
     for (let i = 0; i < arr.length; i++) {
       // create the button
       var newButton = createButton(arr[i]);
       // append the button
-      $('.buttons-row').append(newButton);
+      listOfButtons.push(newButton);
+      // $('.buttons-row').append(newButton);
+    }
+  }
+
+
+  function displayAllButtons(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      $('.buttons-row').append(arr[i]);
     }
   }
 
@@ -115,5 +140,19 @@ $(document).ready(function () {
 
     // $('.buttons-row').append(newButton);
   }
+
+// renderButtons(){}
+// empty the current view
+  // loop thru the movie array
+    // create button
+    // append to buttons-view
+
+  // displayMovieInfo(){}
+  // gets click button
+  // calls api via ajax
+  // create movie container
+  // prepend to view
+  // get movie title
+  // append to movie container
 
 });
