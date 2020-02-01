@@ -23,7 +23,7 @@ $(document).ready(function () {
   // CUSTOM FUNCTIONS
   // ===================================================
   function loadThePage() {
-    // TODO: create and load the list of animal buttons
+    // create and load the list of animal buttons
     loadButtonArray(listOfTitles);
     displayAllButtons(listOfButtons);
   }
@@ -79,7 +79,6 @@ $(document).ready(function () {
       var favDiv = $('<div>').addClass('card-footer');
       var cardFav = $('<p>').addClass('fav-icon far fa-star').attr('id', 'fav-icon').css('display', 'block');
       favDiv.append(cardFav);
-      // solid: <i class="fas fa-star"></i>
 
       // var cardSource2 = $('<p>').text('source: ' + res[i].source_tld).addClass('text-muted');
       if (res[i].source_tld === '') {
@@ -174,18 +173,24 @@ $(document).ready(function () {
 
   }
 
+
+
+
   function favClicked() {
     // solid: <i class="fas fa-star"></i>
     if ( $(this).hasClass('fas') ) {
       console.log('changed from fas -> far');
-      $(this).addClass('far').remove('fas');
+      $(this).addClass('far').removeClass('fas');
       // $(this).attr('class', 'far fa-star');
       // var myThing = $(this).detach();
+
+      // fas fa-star
+      // far fa-star
 
     } else {
       //FIXME: how come its not working. 
       console.log('changed from far -> fas');
-      $(this).addClass('fas').remove('far');
+      $(this).addClass('fas').removeClass('far');
       // $(this).attr('class', 'fas fa-star');
     }
 
@@ -196,6 +201,11 @@ $(document).ready(function () {
   // });
     console.log($(this));
   }
+
+
+
+
+
 
 
   // ===================================================
