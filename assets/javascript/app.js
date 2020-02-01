@@ -50,50 +50,69 @@ $(document).ready(function () {
       url: queryURL,
       method: 'GET'
     }).then(function (response) {
-      var results = response.data;
 
-      for (let i = 0; i < results.length; i++) {
-
-        var parentDiv = $('<div>').addClass('col-sm-4 card-deck');
-        var cardDiv = $('<div>').addClass('card mb-4 shadow-sm mx-auto');
-        parentDiv.append(cardDiv);
-
-        // ===== Title ================
-        // var cardTitle = $('<h5>').text('put json title thing here');
-        var cardTitle = $('<h3>').text(results[i].title).addClass('card-title');
-        var cardRating = $('<h6>').text('rating: ' + results[i].rating).addClass('text-muted');
-        var cardSource = $('<h7>').text('source: ' + results[i].source_tld).addClass('text-muted');
-        // var cardSource2 = $('<p>').text('source: ' + results[i].source_tld).addClass('text-muted');
-
-        if (results[i].source_tld === '') {
-          cardSource.text('source: unknown');
-          // cardSource2.text('source: unknown');
-        }
-
-        if (results[i].title === '') {
-          cardTitle.text('GIF GIPHY GIF');
-        }
-        var cardHeader = $('<div>').addClass('card-header text-wrap').append(cardTitle);
-        cardHeader.append(cardRating);
-        cardHeader.append(cardSource);
-        cardDiv.append(cardHeader);
-
-        // ====== card gif img =========
-        var cardImg = $('<img>').attr('src', results[i].images.fixed_height.url);
-        var cardBody = $('<div>').addClass('card-body').append(cardImg);
-        cardDiv.append(cardBody);
-
-        $('.first-row').prepend(cardDiv);
-
-      }
+      createAndFillButtons(response.data);
 
     });
+
   }
 
 
-  function loadButtonArray(arr) {
-    
+  function createAndFillButtons(res) {
 
+    for (let i = 0; i < res.length; i++) {
+      // ===================================================
+      // <div class="col-sm-4 card-deck">
+      //   <div class="card card mb-4 shadow-sm mx-auto"></div>
+      // </div>
+      // ===================================================
+      var parentDiv = $('<div>').addClass('col-sm-4 card-deck');
+      var cardDiv = $('<div>').addClass('card mb-4 shadow-sm mx-auto');
+      parentDiv.append(cardDiv);
+
+      // ===== Title ================
+      // var cardTitle = $('<h5>').text('put json title thing here');
+      var cardTitle = $('<h3>').text(res[i].title).addClass('card-title');
+      var cardRating = $('<h6>').text('rating: ' + res[i].rating).addClass('text-muted');
+      var cardSource = $('<h7>').text('source: ' + res[i].source_tld).addClass('text-muted');
+      // var cardSource2 = $('<p>').text('source: ' + res[i].source_tld).addClass('text-muted');
+      if (res[i].source_tld === '') {
+        cardSource.text('source: unknown');
+        // cardSource2.text('source: unknown');
+      }
+      if (res[i].title === '') {
+        cardTitle.text('GIF GIPHY GIF');
+      }
+
+      // ===================================================
+      // <div class="col-sm-4 card-deck">
+      //   <div class="card card mb-4 shadow-sm mx-auto">
+      //     <div class="card-header text-wrap">
+      //      <h3>
+      //      <h6>
+      //      <h7>
+      //     </div>
+      //     <div class="card-body">
+      //       <img>
+      //     </div>
+      //   </div>
+      // </div>
+      // ===================================================
+      var cardHeader = $('<div>').addClass('card-header text-wrap').append(cardTitle);
+      cardHeader.append(cardRating);
+      cardHeader.append(cardSource);
+      cardDiv.append(cardHeader);
+
+      // ====== card gif img =========
+      var cardImg = $('<img>').attr('src', res[i].images.fixed_height.url);
+      var cardBody = $('<div>').addClass('card-body').append(cardImg);
+      cardDiv.append(cardBody);
+
+      $('.first-row').prepend(cardDiv);
+
+    }
+  }
+  function loadButtonArray(arr) {
 
     for (let i = 0; i < arr.length; i++) {
       var newButton = createButton(arr[i]);
@@ -131,6 +150,22 @@ $(document).ready(function () {
 
   }
 
+  // TODO: make a favorites section
+  function cardClicked() {
+    console.log($(this));
+    var card = $(this)[0].innerHTML;
+
+    var myCard = $(this).detach();
+    console.log(myCard);
+    console.log(card);
+
+    var myFavDiv = $('<h2>').addClass('display-6').text('My Favorites');
+
+    $('.favorite-cards').append(myFavDiv);
+    $('.favorite-cards').append(myCard);
+
+  }
+
 
   // ===================================================
   // global like event listener on the buttons
@@ -138,5 +173,7 @@ $(document).ready(function () {
   $(document).on('click', '.animal-button', getTheGifsFromGiphy);
 
   $(document).on('click', '#add-button', submitNewAnimal);
+
+  // $(document).on('click', '.card', cardClicked);
 
 });
