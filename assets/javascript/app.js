@@ -73,8 +73,14 @@ $(document).ready(function () {
       // ===== Title ================
       // var cardTitle = $('<h5>').text('put json title thing here');
       var cardTitle = $('<h3>').text(res[i].title).addClass('card-title');
+      // cardTitle.append('<i class="fas fa-star"></i>').css('float', 'right');
       var cardRating = $('<h6>').text('rating: ' + res[i].rating).addClass('text-muted');
       var cardSource = $('<h7>').text('source: ' + res[i].source_tld).addClass('text-muted');
+      var favDiv = $('<div>').addClass('card-footer');
+      var cardFav = $('<p>').addClass('fav-icon far fa-star').attr('id', 'fav-icon').css('display', 'block');
+      favDiv.append(cardFav);
+      // solid: <i class="fas fa-star"></i>
+
       // var cardSource2 = $('<p>').text('source: ' + res[i].source_tld).addClass('text-muted');
       if (res[i].source_tld === '') {
         cardSource.text('source: unknown');
@@ -106,7 +112,9 @@ $(document).ready(function () {
       // ====== card gif img =========
       var cardImg = $('<img>').attr('src', res[i].images.fixed_height.url);
       var cardBody = $('<div>').addClass('card-body').append(cardImg);
+      // cardBody.append(cardFav);
       cardDiv.append(cardBody);
+      cardDiv.append(favDiv);
 
       $('.first-row').prepend(cardDiv);
 
@@ -166,6 +174,23 @@ $(document).ready(function () {
 
   }
 
+  function favClicked() {
+    // solid: <i class="fas fa-star"></i>
+    if ( $(this).hasClass('fas') ) {
+      console.log('changed from fas -> far');
+      $(this).addClass('far').remove('fas');
+      // $(this).attr('class', 'far fa-star');
+      // var myThing = $(this).detach();
+
+    } else {
+      //FIXME: how come its not working. 
+      console.log('changed from far -> fas');
+      $(this).addClass('fas').remove('far');
+      // $(this).attr('class', 'fas fa-star');
+    }
+    console.log($(this));
+  }
+
 
   // ===================================================
   // global like event listener on the buttons
@@ -176,5 +201,7 @@ $(document).ready(function () {
 
   // favorite clicks
   // $(document).on('click', '.card', cardClicked);
+
+  $(document).on('click', '.fav-icon', favClicked);
 
 });
