@@ -174,6 +174,7 @@ $(document).ready(function () {
 
   $(document).on('click', '#add-button', submitNewAnimal);
 
+  // favorite clicks
   // $(document).on('click', '.card', cardClicked);
 
 });
