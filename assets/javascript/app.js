@@ -188,6 +188,12 @@ $(document).ready(function () {
       $(this).addClass('fas').remove('far');
       // $(this).attr('class', 'fas fa-star');
     }
+
+    //TODO: try this above
+  //   $('#click_advance').click(function() {
+  //     $('#display_advance').toggle('1000');
+  //     $("i", this).toggleClass("icon-circle-arrow-up icon-circle-arrow-down");
+  // });
     console.log($(this));
   }
 
