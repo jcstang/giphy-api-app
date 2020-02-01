@@ -45,3 +45,7 @@ button {
 .card-title {
   word-wrap: break-word;
 }
+
+.navbar h1 {
+  font-family: 'Permanent Marker', cursive;
+}

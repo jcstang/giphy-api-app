@@ -7,7 +7,7 @@ $(document).ready(function () {
   // ===================================================
   // GLOBAL VARIABLES
   // ===================================================
-  var listOfTitles = ['dragon', 'eagle', 'gecko', 'cat', 'dog', 'catdog'];
+  var listOfTitles = ['dragon', 'eagle', 'gecko', 'tortoise', 'snake', 'cat', 'dog', 'catdog'];
   var listOfButtons = [];
   var randomNumber = Math.floor(Math.random() * 62);
 
