@@ -9,7 +9,7 @@ $(document).ready(function () {
   // ===================================================
   var listOfTitles = ['dragon', 'eagle', 'gecko', 'tortoise', 'snake', 'cat', 'dog', 'catdog'];
   var listOfButtons = [];
-  var randomNumber = Math.floor(Math.random() * 62);
+  
 
   // ===================================================
   // START APP
@@ -43,6 +43,8 @@ $(document).ready(function () {
 
   function getTheGifsFromGiphy() {
     var daGif = $(this).attr('data-gif');
+    var randomNumber = Math.floor(Math.random() * 62);
+    console.log(randomNumber);
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZrhJhYmel74Dmx4uq2zHvmOSxXpNlSgu&q=" +
       daGif.split(' ').join('+') + "&limit=10&offset=" + randomNumber + "&rating=G&lang=en";
 
